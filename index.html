@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Demokratie und Gesellschaft — HSU 4. Klasse</title>
+<link rel="manifest" href="./manifest.webmanifest">
+<meta name="theme-color" content="#FBF9F3" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#101720" media="(prefers-color-scheme: dark)">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="HSU Demokratie">
+<link rel="apple-touch-icon" href="./icon-192.png">
+<link rel="icon" href="./icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FBF9F3;
+    --panel:#FFFFFF;
+    --ink:#1D3557;
+    --ink-soft:#4C6489;
+    --rule:#C9D7E6;
+    --red:#A82A2F;
+    --green:#1C6B52;
+    --green-bg:#F0F5F0;
+    --sand:#EDE6D6;
+    --text:#232F3D;
+    --text-soft:#5A6875;
+
+    box-sizing:border-box;
+    padding-top:env(safe-area-inset-top, 0px);
+    padding-bottom:env(safe-area-inset-bottom, 0px);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#101720;
+      --panel:#17202C;
+      --ink:#A9C6EA;
+      --ink-soft:#8CA5C4;
+      --rule:#2B3B50;
+      --red:#E8888C;
+      --green:#78C2A5;
+      --green-bg:#16241F;
+      --sand:#1F2935;
+      --text:#DCE4ED;
+      --text-soft:#9AA8B7;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#101720;
+    --panel:#17202C;
+    --ink:#A9C6EA;
+    --ink-soft:#8CA5C4;
+    --rule:#2B3B50;
+    --red:#E8888C;
+    --green:#78C2A5;
+    --green-bg:#16241F;
+    --sand:#1F2935;
+    --text:#DCE4ED;
+    --text-soft:#9AA8B7;
+  }
+  html{ scroll-padding-top:env(safe-area-inset-top, 0px); -webkit-text-size-adjust:100%; }
+  *,*::before,*::after{ box-sizing:border-box; }
+
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--text);
+    font-family:"Atkinson Hyperlegible","Verdana","Segoe UI",system-ui,sans-serif;
+    font-size:17px;
+    line-height:1.6;
+  }
+  .wrap{ max-width:44rem; margin:0 auto; padding:1.5rem 1.15rem 4rem; }
+
+  /* ---------- Hero ---------- */
+  .hero{ padding:2rem 0 1.25rem; }
+  .slip{
+    background:var(--panel);
+    border:1px solid var(--rule);
+    border-radius:2px;
+    box-shadow:0 10px 24px rgba(29,53,87,.13);
+    transform:rotate(-1.6deg);
+    padding:1rem 1.1rem 1.15rem;
+    max-width:21rem;
+    margin-bottom:1.6rem;
+  }
+  .slip-head{
+    font-weight:700; color:var(--ink); font-size:.95rem;
+    border-bottom:2px solid var(--ink); padding-bottom:.35rem; margin-bottom:.6rem;
+  }
+  .slip-row{
+    display:flex; align-items:center; gap:.65rem;
+    padding:.3rem 0;
+    background-image:linear-gradient(to bottom, transparent calc(100% - 1px), var(--rule) calc(100% - 1px));
+    color:var(--ink-soft); font-size:.95rem;
+  }
+  .box{
+    position:relative; flex:0 0 auto;
+    width:1.15rem; height:1.15rem;
+    border:1.5px solid var(--ink-soft); border-radius:1px;
+  }
+  .box svg{ position:absolute; inset:-28%; width:156%; height:156%; }
+
+  h1{
+    font-size:clamp(1.85rem,6.2vw,2.7rem);
+    line-height:1.12; margin:0 0 .3rem; color:var(--ink);
+    letter-spacing:-.015em;
+  }
+  .hero .sub{
+    font-family:"Literata",Georgia,serif;
+    font-size:1.05rem; color:var(--text-soft); margin:0 0 1.2rem; max-width:32rem;
+  }
+  .tagline{
+    display:inline-block; font-size:.85rem; color:var(--ink-soft);
+    border:1px solid var(--rule); border-radius:999px; padding:.22rem .7rem;
+  }
+
+  /* ---------- How to use ---------- */
+  .howto{
+    background:var(--sand); border-radius:4px;
+    padding:1.1rem 1.2rem; margin:1.8rem 0 2.6rem;
+  }
+  .howto h2{ font-size:1.05rem; margin:0 0 .5rem; color:var(--ink); }
+  .howto ul{ margin:0; padding-left:1.1rem; font-family:"Literata",Georgia,serif; font-size:.96rem; }
+  .howto li{ margin:.3rem 0; }
+
+  /* ---------- Chapters ---------- */
+  .chapter{ margin:3.2rem 0 0; }
+  .chapter > h2{
+    font-size:1.5rem; color:var(--ink); margin:0 0 .15rem; line-height:1.2;
+  }
+  .chapter > .tr-title{
+    font-family:"Literata",Georgia,serif; color:var(--green);
+    font-size:1rem; margin:0 0 1.6rem; padding-bottom:.9rem;
+    border-bottom:2px solid var(--rule);
+  }
+  .num{ color:var(--ink-soft); font-weight:400; }
+
+  .topic{ margin:0 0 2.6rem; }
+  .topic h3{
+    font-size:1.15rem; margin:0 0 .1rem; color:var(--text);
+  }
+  .topic .tr-sub{
+    font-family:"Literata",Georgia,serif; font-style:italic;
+    color:var(--text-soft); font-size:.94rem; margin:0 0 .9rem;
+  }
+
+  .de{
+    border-left:3px solid var(--ink);
+    padding:.1rem 0 .1rem 1rem;
+    color:var(--ink);
+  }
+  .de p{ margin:.55rem 0; }
+  .de ul{ margin:.55rem 0; padding-left:1.15rem; }
+  .de li{ margin:.35rem 0; }
+  .de b{ font-weight:700; }
+
+  .tr{
+    background:var(--green-bg);
+    border-left:3px solid var(--green);
+    padding:.75rem 1rem;
+    margin:.9rem 0 0;
+    font-family:"Literata",Georgia,serif;
+    font-size:.97rem;
+    line-height:1.65;
+  }
+  .tr p{ margin:.45rem 0; }
+  .tr p:first-child{ margin-top:0; }
+  .tr p:last-child{ margin-bottom:0; }
+  .tr ul{ margin:.45rem 0; padding-left:1.1rem; }
+
+  .merke{
+    margin:1rem 0 0; padding:.8rem 1rem;
+    border:1.5px solid var(--red); border-radius:3px;
+  }
+  .merke .label{ color:var(--red); font-weight:700; font-size:.82rem; }
+  .merke .satz{ color:var(--ink); margin:.25rem 0 .35rem; }
+  .merke .cev{ font-family:"Literata",Georgia,serif; font-size:.92rem; color:var(--text-soft); margin:0; }
+
+  .task{
+    margin:.9rem 0 0; padding-left:1rem;
+    border-left:3px dotted var(--ink-soft);
+    font-size:.95rem; color:var(--text-soft);
+  }
+  .task .label{ color:var(--ink); font-weight:700; }
+
+  /* ---------- Vocabulary ---------- */
+  .tablewrap{ overflow-x:auto; margin:1.2rem 0 0; }
+  table{ border-collapse:collapse; width:100%; min-width:26rem; font-size:.95rem; }
+  th,td{ text-align:left; padding:.45rem .6rem; border-bottom:1px solid var(--rule); vertical-align:top; }
+  th{ color:var(--ink-soft); font-size:.82rem; font-weight:700; }
+  td:first-child{ color:var(--ink); font-weight:700; white-space:nowrap; }
+  td:last-child{ font-family:"Literata",Georgia,serif; color:var(--text-soft); }
+
+  /* ---------- Questions ---------- */
+  details{
+    border-bottom:1px solid var(--rule);
+    padding:.75rem 0;
+  }
+  summary{
+    cursor:pointer; color:var(--ink); font-weight:700; list-style:none;
+    display:flex; gap:.6rem; align-items:baseline;
+  }
+  summary::-webkit-details-marker{ display:none; }
+  summary::before{
+    content:"?"; color:var(--red); font-weight:700; flex:0 0 auto;
+  }
+  summary:focus-visible{ outline:2px solid var(--red); outline-offset:3px; }
+  details > div{
+    margin:.55rem 0 0 1.25rem;
+    font-family:"Literata",Georgia,serif; font-size:.95rem;
+  }
+  details .tr-ans{ color:var(--green); margin-top:.3rem; }
+
+  footer{
+    margin-top:3.5rem; padding-top:1.2rem; border-top:2px solid var(--rule);
+    font-size:.88rem; color:var(--text-soft);
+    font-family:"Literata",Georgia,serif;
+  }
+  a{ color:var(--ink); }
+
+  @media print{
+    body{ background:#fff; font-size:11.5pt; }
+    .slip{ box-shadow:none; transform:none; }
+    details{ break-inside:avoid; }
+    details > div{ display:block !important; }
+    .topic{ break-inside:avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <div class="slip" aria-hidden="true">
+      <div class="slip-head">Stimmzettel — Klassensprecherwahl 4a</div>
+      <div class="slip-row"><span class="box"></span> Lena M.</div>
+      <div class="slip-row"><span class="box">
+        <svg viewBox="0 0 40 40" fill="none" stroke="#A82A2F" stroke-width="5" stroke-linecap="round">
+          <path d="M8 8 L32 32 M32 8 L8 32"/>
+        </svg>
+      </span> Elif T.</div>
+      <div class="slip-row"><span class="box"></span> Jonas K.</div>
+    </div>
+
+    <span class="tagline">HSU 3/4 · Lernbereich 1</span>
+    <h1>Demokratie und Gesellschaft</h1>
+    <p class="sub">Almanca ders içeriği, yanında Türkçe açıklamasıyla. 4. sınıf, Bayern (LehrplanPLUS).</p>
+  </header>
+
+  <div class="howto">
+    <h2>Nasıl çalışalım?</h2>
+    <ul>
+      <li>Mavi çizgili bölümler <b>okulda karşısına çıkacak Almanca cümleler</b>. Onları kızın yüksek sesle okusun.</li>
+      <li>Yeşil bölümler sana; anlamadığı yeri Türkçe anlat, sonra tekrar Almancasını söylesin.</li>
+      <li>Kırmızı kutulardaki <b>Merksätze</b> ezberlenecek cümleler. Probearbeit'te tam bu ifadeler istenir.</li>
+      <li>Günde 20 dakika yeter. Konuyu Manching'den örnekle bağla, çok daha kolay akılda kalır.</li>
+    </ul>
+  </div>
+
+  <!-- ============ 1.1 ============ -->
+  <section class="chapter">
+    <h2><span class="num">1.1</span> Zusammenleben in Familie, Schule und Gemeinschaft</h2>
+    <p class="tr-title">Ailede, okulda ve toplumda birlikte yaşam</p>
+
+    <!-- A -->
+    <div class="topic">
+      <h3>Abstimmen und wählen</h3>
+      <p class="tr-sub">Oylama yapmak ve seçmek</p>
+
+      <div class="de">
+        <p>In einer <b>Demokratie</b> entscheiden die Menschen gemeinsam. Jeder darf seine Meinung sagen.</p>
+        <p>Bei einer <b>Abstimmung</b> zählt man die <b>Stimmen</b>. Die <b>Mehrheit</b> entscheidet. Das bedeutet: Die größere Gruppe bekommt recht.</p>
+        <p>Die <b>Minderheit</b> ist die kleinere Gruppe. Ihre Meinung ist trotzdem wichtig und wird angehört.</p>
+        <p>Eine <b>Wahl</b> hat feste Regeln:</p>
+        <ul>
+          <li><b>frei</b> — Niemand darf dir sagen, wen du wählen musst.</li>
+          <li><b>geheim</b> — Niemand darf sehen, wen du wählst.</li>
+          <li><b>gleich</b> — Jede Stimme zählt gleich viel.</li>
+        </ul>
+        <p>In jeder Klasse wird ein <b>Klassensprecher</b> oder eine <b>Klassensprecherin</b> gewählt. Er oder sie <b>vertritt</b> die Klasse und bringt die Wünsche der Kinder in den <b>Klassenrat</b>.</p>
+        <p>Wenn meine Wahl verliert, akzeptiere ich das <b>Ergebnis</b>. Das gehört zur Demokratie.</p>
+      </div>
+
+      <div class="tr">
+        <p><b>Demokratie</b> = halkın birlikte karar vermesi. Türkçedeki "demokrasi" ile aynı.</p>
+        <p><b>Mehrheit</b> çoğunluk, <b>Minderheit</b> azınlık demek. Almancada "Die Mehrheit entscheidet" kalıp cümledir; sınavda sık sorulur.</p>
+        <p>Seçimin üç kuralı: <b>frei</b> (özgür), <b>geheim</b> (gizli), <b>gleich</b> (eşit). Kızına şöyle anlat: perdenin arkasına giriyorsun, kimse kime oy verdiğini görmüyor, kimse sana "şuna oy ver" diyemez ve senin oyun öğretmenin oyu kadar değerli.</p>
+        <p><b>Klassensprecher</b> = sınıf başkanı. Görevi sınıfı temsil etmek (vertreten), sorunları <b>Klassenrat</b>'ta (sınıf meclisi) dile getirmek.</p>
+        <p>Önemli nokta: Seçimi kaybedince sonuca saygı göstermek de demokrasinin parçası. Öğretmenler bunu özellikle sorar.</p>
+      </div>
+
+      <div class="merke">
+        <div class="label">Merksatz</div>
+        <p class="satz">Bei einer Abstimmung entscheidet die Mehrheit. Eine Wahl ist frei, geheim und gleich.</p>
+        <p class="cev">Oylamada çoğunluk karar verir. Seçim özgür, gizli ve eşittir.</p>
+      </div>
+
+      <div class="task">
+        <span class="label">Kleine Aufgabe:</span> Evde bir oylama yapın — akşam ne yenecek? Herkes bir kâğıda yazsın, katlasın, sayın. Sonra sor: "War das eine geheime Wahl?"
+      </div>
+    </div>
+
+    <!-- B -->
+    <div class="topic">
+      <h3>Unsere Gemeinde: Ämter und Aufgaben</h3>
+      <p class="tr-sub">Belediyemiz: görevler ve hizmetler</p>
+
+      <div class="de">
+        <p>Ich wohne in <b>Manching</b>. Manching ist ein <b>Markt</b>, also eine <b>Gemeinde</b>. <b>Oberstimm</b> ist ein <b>Ortsteil</b> von Manching.</p>
+        <p>Manching liegt im <b>Landkreis</b> Pfaffenhofen an der Ilm, im <b>Bundesland</b> Bayern, im Land Deutschland.</p>
+        <p>Der <b>Bürgermeister</b> oder die <b>Bürgermeisterin</b> leitet die Gemeinde. Er oder sie wird von den <b>Bürgern</b> gewählt.</p>
+        <p>Der <b>Gemeinderat</b> ist eine Gruppe gewählter Personen. Der Gemeinderat <b>beschließt</b> wichtige Dinge, zum Beispiel: Wird ein neuer Spielplatz gebaut?</p>
+        <p>Das <b>Rathaus</b> ist das Haus der <b>Verwaltung</b>. Dort arbeiten Bürgermeister, Verwaltung und Gemeinderat.</p>
+        <p><b>Aufgaben der Gemeinde:</b></p>
+        <ul>
+          <li>die <b>Feuerwehr</b></li>
+          <li><b>Wasserversorgung</b> und <b>Abwasser</b> (Wasserwerk und Kläranlage)</li>
+          <li>die <b>Müllabfuhr</b></li>
+          <li><b>Straßen</b>, Wege und Verkehr</li>
+          <li><b>Schulen</b>, Kindergärten und Mittagsbetreuung</li>
+          <li><b>Kultur</b> und Freizeit: Bücherei, Sportplatz, Hallenbad, Museum</li>
+        </ul>
+        <p>Alle sechs Jahre ist in Bayern <b>Kommunalwahl</b>. Dann wählen die Bürger den Bürgermeister und den Gemeinderat.</p>
+      </div>
+
+      <div class="tr">
+        <p>Bu bölüm tamamen yaşadığınız yerle ilgili; en somut ve en kolay puan alınan kısım.</p>
+        <p><b>Gemeinde</b> = belediye/köy-kasaba yönetimi. Manching resmî olarak bir <b>Markt</b> (pazar hakkı olan eski bir kasaba); bu yüzden yerel gazetede "Markt Manching" ve çoğu zaman "Marktgemeinderat" yazar. Oberstimm ise Manching'in bir mahallesi (<b>Ortsteil</b>).</p>
+        <p>Sıralamayı ezberletmek işe yarar: <b>Oberstimm → Manching → Landkreis Pfaffenhofen a.d. Ilm → Bayern → Deutschland → Europa.</b> Bu zincir 5.1 (Raum) ünitesinde de tekrar çıkacak.</p>
+        <p><b>Bürgermeister</b> belediye başkanı, <b>Gemeinderat</b> belediye meclisi. Fark: Bürgermeister tek kişi ve yönetir; Gemeinderat bir grup ve <b>karar alır</b> (beschließen). Sınavda "Wer beschließt?" diye sorulursa cevap Gemeinderat.</p>
+        <p>Bavyera'da yerel seçim (<b>Kommunalwahl</b>) altı yılda bir yapılıyor; sonuncusu 8 Mart 2026'daydı.</p>
+        <p>Manching'e özel somut örnekler: itfaiye (Freiwillige Feuerwehr), Wasserwerk ve Kläranlage, Hallenbad, Kelten-Römer-Museum, kızının okulu. Hepsi Gemeinde'nin işi.</p>
+      </div>
+
+      <div class="merke">
+        <div class="label">Merksatz</div>
+        <p class="satz">Der Bürgermeister leitet die Gemeinde. Der Gemeinderat beschließt, was in der Gemeinde gemacht wird. Beide werden von den Bürgern gewählt.</p>
+        <p class="cev">Belediye başkanı belediyeyi yönetir. Belediye meclisi neyin yapılacağına karar verir. İkisini de vatandaşlar seçer.</p>
+      </div>
+
+      <div class="task">
+        <span class="label">Kleine Aufgabe:</span> Manching'in internet sitesinden bakın: "Wie heißt unser Bürgermeister?" Bir de Rathaus'un önünden geçerken durup bakın, yeri aklında kalsın.
+      </div>
+    </div>
+
+    <!-- C -->
+    <div class="topic">
+      <h3>Kinderrechte: Rechte und Pflichten</h3>
+      <p class="tr-sub">Çocuk hakları: haklar ve sorumluluklar</p>
+
+      <div class="de">
+        <p>Alle Kinder auf der Welt haben <b>Rechte</b>. Diese Rechte stehen in der <b>UN-Kinderrechtskonvention</b>.</p>
+        <ul>
+          <li><b>Recht auf Bildung</b> — jedes Kind darf zur Schule gehen.</li>
+          <li><b>Recht auf Mitbestimmung</b> — Kinder dürfen ihre Meinung sagen und mitentscheiden.</li>
+          <li><b>Recht auf Schutz</b> — kein Kind darf geschlagen oder schlecht behandelt werden.</li>
+          <li><b>Recht auf Spiel und Freizeit</b></li>
+          <li><b>Recht auf Gesundheit</b> und gutes Essen</li>
+          <li><b>Inklusion: Recht auf gemeinsames Lernen</b> — alle Kinder lernen zusammen, auch Kinder mit einer Behinderung.</li>
+        </ul>
+        <p>Im <b>Grundgesetz</b>, Artikel 1, steht: „Die Würde des Menschen ist unantastbar.“ Das gilt für jeden Menschen.</p>
+        <p>Ich habe Rechte, aber auch <b>Pflichten</b>: zur Schule gehen, Regeln einhalten, meinen <b>Klassendienst</b> machen, <b>Verantwortung</b> übernehmen.</p>
+      </div>
+
+      <div class="tr">
+        <p><b>Recht</b> = hak, <b>Pflicht</b> = ödev/sorumluluk. Ders bu ikisini hep birlikte işliyor: hakların var ama okula gitmek, kurallara uymak, sınıf nöbetini yapmak da senin görevin.</p>
+        <p><b>Mitbestimmung</b> = söz hakkı, karara katılma. <b>Inklusion</b> = engelli çocukların da aynı sınıfta birlikte öğrenmesi.</p>
+        <p><b>Grundgesetz</b> Almanya'nın anayasası. 1. madde "İnsan onuru dokunulmazdır". Kızının okulu "Schule ohne Rassismus" unvanına sahip ve sitesinde 4. sınıfların tam olarak Grundgesetz, çocuk hakları ve demokratik değerler üzerine çalıştığı yazıyor — yani bu konu okulda ayrıca vurgulanacak.</p>
+      </div>
+
+      <div class="merke">
+        <div class="label">Merksatz</div>
+        <p class="satz">Jedes Kind hat das Recht auf Bildung, auf Schutz und auf Mitbestimmung. Zu den Rechten gehören auch Pflichten.</p>
+        <p class="cev">Her çocuğun eğitim, korunma ve söz hakkı vardır. Hakların yanında sorumluluklar da vardır.</p>
+      </div>
+    </div>
+
+    <!-- D -->
+    <div class="topic">
+      <h3>Kulturen vergleichen</h3>
+      <p class="tr-sub">Kültürleri karşılaştırmak</p>
+
+      <div class="de">
+        <p>In Deutschland leben Menschen aus vielen Ländern. Sie haben verschiedene <b>Bräuche</b>, <b>Feste</b> und <b>Gewohnheiten</b>.</p>
+        <p><b>Feste und Feiertage:</b> Weihnachten, Ostern, Nikolaus, Erntedank, das <b>Fest des Fastenbrechens</b> (Ramazan Bayramı) und das <b>Opferfest</b> (Kurban Bayramı).</p>
+        <p>Auch <b>Essgewohnheiten</b>, <b>Kleidung</b>, Begrüßung und <b>Umgangsformen</b> sind manchmal verschieden.</p>
+        <p>Es gibt <b>Gemeinsamkeiten</b> und <b>Unterschiede</b>. Zum Beispiel: Bei vielen Festen kommt die Familie zusammen und es gibt besonderes Essen. Das ist eine Gemeinsamkeit.</p>
+        <p>Ich bin <b>offen</b> und <b>neugierig</b> und behandle alle Menschen mit <b>Respekt</b>.</p>
+      </div>
+
+      <div class="tr">
+        <p>Burada kızının avantajı var: iki kültürü de biliyor. Öğretmenler tam olarak bunu duymak ister.</p>
+        <p>Almanca karşılıkları öğrensin: <b>das Fest des Fastenbrechens</b> veya <b>das Zuckerfest</b> = Ramazan Bayramı, <b>das Opferfest</b> = Kurban Bayramı, <b>das Fasten</b> = oruç.</p>
+        <p>Sınavda genelde "Nenne eine Gemeinsamkeit und einen Unterschied" diye sorulur. Hazır cevap: <i>Gemeinsamkeit: Bei beiden Festen trifft sich die Familie und es gibt Geschenke für Kinder. Unterschied: Weihnachten ist im Dezember, das Zuckerfest richtet sich nach dem Mondkalender.</i></p>
+        <p>Kızının okulunda 30'dan fazla ülkeden çocuk var; bu konuyu sınıfta somut olarak yaşıyorlar.</p>
+      </div>
+
+      <div class="task">
+        <span class="label">Kleine Aufgabe:</span> Birlikte iki sütunlu bir tablo yapın: solda Weihnachten, sağda Zuckerfest. Essen, Geschenke, Familie, Kleidung satırlarını doldursun — Almanca.
+      </div>
+    </div>
+
+    <!-- E -->
+    <div class="topic">
+      <h3>Streit lösen und Rollenklischees hinterfragen</h3>
+      <p class="tr-sub">Anlaşmazlığı çözmek ve rol kalıplarını sorgulamak</p>
+
+      <div class="de">
+        <p>Bei einem <b>Streit</b> gibt es Regeln:</p>
+        <ul>
+          <li>Ich bleibe ruhig und <b>höre zu</b>.</li>
+          <li>Ich sage eine <b>Ich-Botschaft</b>: „Ich bin traurig, wenn …“ statt „Du bist gemein!“</li>
+          <li>Wir suchen einen <b>Kompromiss</b>. Das heißt: Jeder gibt ein bisschen nach.</li>
+          <li>Ich <b>entschuldige</b> mich, wenn ich einen Fehler gemacht habe.</li>
+          <li>Ich löse Streit <b>gewaltfrei</b>, also ohne Schlagen und ohne Beleidigungen.</li>
+        </ul>
+        <p><b>Rollenklischees</b> sind falsche Vorstellungen, zum Beispiel: „Fußball ist nur für Jungen“ oder „Rosa ist nur für Mädchen“.</p>
+        <p>Das stimmt nicht. Jedes Kind darf seine eigenen <b>Stärken</b> und <b>Interessen</b> haben.</p>
+      </div>
+
+      <div class="tr">
+        <p><b>Kompromiss</b> = uzlaşma, orta yol. Almanca tanımı ezberlensin: "Jeder gibt ein bisschen nach" (herkes biraz geri adım atar).</p>
+        <p><b>Ich-Botschaft</b> = ben-dili. "Sen kötüsün" yerine "Ben üzülüyorum" demek. Bu kavram Almanca derslerinde de karşısına çıkacak.</p>
+        <p><b>Rollenklischee</b> = kalıp yargı, "kızlar şunu yapar, erkekler bunu yapar" düşüncesi. Ders bunun doğru olmadığını öğretiyor.</p>
+        <p>Kızının okulunda "Zammgrauft" adlı şiddetsiz iletişim atölyeleri yapılıyor; bu konu orada da işleniyor.</p>
+      </div>
+
+      <div class="merke">
+        <div class="label">Merksatz</div>
+        <p class="satz">Ein Kompromiss bedeutet: Jeder gibt ein bisschen nach, damit beide zufrieden sind.</p>
+        <p class="cev">Uzlaşma demek: Herkes biraz geri adım atar, böylece iki taraf da memnun olur.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 1.2 ============ -->
+  <section class="chapter">
+    <h2><span class="num">1.2</span> Leben in einer Medien- und Konsumgesellschaft</h2>
+    <p class="tr-title">Medya ve tüketim toplumunda yaşam</p>
+
+    <!-- A -->
+    <div class="topic">
+      <h3>Medien und ihre Aufgaben</h3>
+      <p class="tr-sub">Medya ve işlevleri</p>
+
+      <div class="de">
+        <p><b>Medien</b> sind zum Beispiel: Buch, Zeitung, Radio, Fernsehen, Handy, Tablet, Computer und das <b>Internet</b>.</p>
+        <p>Medien haben verschiedene <b>Aufgaben</b>:</p>
+        <ul>
+          <li><b>informieren</b> — Nachrichten, Sachbuch, Wetterbericht</li>
+          <li><b>unterhalten</b> — Film, Spiel, Musik</li>
+          <li><b>kommunizieren</b> — telefonieren, Nachrichten schreiben</li>
+          <li><b>lernen</b> — Lern-App, Lexikon</li>
+        </ul>
+        <p>Vor dem Einschalten frage ich mich: <b>Warum</b> nutze ich das? <b>Wie lange</b> will ich das nutzen?</p>
+        <p>Nicht alles im Internet ist <b>wahr</b>. Bilder werden oft <b>bearbeitet</b>. Was ich sehe, ist nicht immer die <b>Wirklichkeit</b>.</p>
+        <p>Meine Regeln: Ich gebe keine <b>persönlichen Daten</b> weiter. Bei Problemen frage ich einen Erwachsenen.</p>
+      </div>
+
+      <div class="tr">
+        <p><b>Medien</b> çoğul; tekili <b>das Medium</b>. Dört işlev ezberlensin: informieren, unterhalten, kommunizieren, lernen. Sınavda "Nenne zwei Aufgaben von Medien" sorusu klasiktir.</p>
+        <p><b>Wirklichkeitsnähe</b> konusu şu demek: ekranda gördüğün her şey gerçek değil. Filtreli fotoğraf, kurgu video, yanlış haber. Kızına somut örnek ver: bir YouTube videosunda gösterilen oyuncak gerçekte o kadar iyi çalışmıyor.</p>
+        <p>Almanca faydalı soru kalıbı: <i>"Ist das echt oder ist das Werbung?"</i></p>
+      </div>
+    </div>
+
+    <!-- B -->
+    <div class="topic">
+      <h3>Werbung: die Tricks erkennen</h3>
+      <p class="tr-sub">Reklam: hileleri fark etmek</p>
+
+      <div class="de">
+        <p><b>Werbung</b> will, dass wir etwas <b>kaufen</b>. Werbung zeigt nur das Schöne, nicht die Nachteile.</p>
+        <p><b>Tricks der Werbung:</b></p>
+        <ul>
+          <li>bunte Farben und große Bilder als <b>Blickfang</b></li>
+          <li>bekannte Figuren oder Stars auf der <b>Verpackung</b></li>
+          <li>fröhliche <b>Musik</b> und glückliche Kinder im Film</li>
+          <li>Wörter wie „nur heute“, „gratis“, „neu“</li>
+        </ul>
+        <p><b>Tricks im Supermarkt:</b></p>
+        <ul>
+          <li>Süßigkeiten stehen an der <b>Kasse</b> ganz unten, damit Kinder sie sehen und greifen können (<b>Quengelware</b>).</li>
+          <li>Teure Waren stehen in <b>Augenhöhe</b>, billige ganz oben oder ganz unten.</li>
+          <li>Milch und Brot sind ganz hinten, damit man durch den <b>ganzen Laden</b> laufen muss.</li>
+          <li>Musik, Licht und der <b>Duft</b> von frischem Brot sollen uns länger im Laden halten.</li>
+        </ul>
+      </div>
+
+      <div class="tr">
+        <p><b>Blickfang</b> = göz yakalayıcı, dikkat çeken şey. <b>Quengelware</b> = kasa önünde, çocukların eli yetişecek yükseklikte duran şekerler ("quengeln" = mızmızlanmak). Bu kelime derste kesinlikle geçer.</p>
+        <p><b>Augenhöhe</b> = göz hizası. Marketteki en pahalı ürünler tam göz hizasındadır.</p>
+        <p>Bu konu evde çalışılacak en eğlenceli kısım: Edeka ya da Rewe'ye gidin ve kızın bu dört hileyi tek tek göstersin. Bir daha unutmaz.</p>
+      </div>
+
+      <div class="merke">
+        <div class="label">Merksatz</div>
+        <p class="satz">Werbung will, dass wir etwas kaufen. Sie zeigt nur die Vorteile, nicht die Nachteile.</p>
+        <p class="cev">Reklam bir şey satın almamızı ister. Sadece iyi yanlarını gösterir, kötü yanlarını değil.</p>
+      </div>
+
+      <div class="task">
+        <span class="label">Kleine Aufgabe:</span> Markette dört hileyi bulun: Quengelware, Augenhöhe, Weg durch den Laden, Musik oder Duft. Her bulduğuna bir puan.
+      </div>
+    </div>
+
+    <!-- C -->
+    <div class="topic">
+      <h3>Kinder als Konsumenten: bewusst einkaufen</h3>
+      <p class="tr-sub">Tüketici olarak çocuklar: bilinçli alışveriş</p>
+
+      <div class="de">
+        <p>Ein <b>Konsument</b> ist jemand, der etwas kauft und benutzt. Auch Kinder sind Konsumenten.</p>
+        <p>Vor dem Kaufen frage ich mich: <b>Brauche</b> ich das wirklich, oder <b>will</b> ich es nur? Ein <b>Bedürfnis</b> brauche ich zum Leben, einen <b>Wunsch</b> nicht.</p>
+        <p>Ich vergleiche <b>Preise</b> und teile mein <b>Taschengeld</b> ein. Ich kann auch <b>sparen</b>.</p>
+        <p><b>Nachhaltig</b> handeln heißt: an die Zukunft und an die <b>Umwelt</b> denken.</p>
+        <ul>
+          <li>Sachen <b>reparieren</b> statt wegwerfen</li>
+          <li><b>tauschen</b>, gebraucht kaufen oder weitergeben</li>
+          <li>wenig <b>Verpackung</b> und keinen unnötigen Plastikmüll</li>
+          <li><b>regionale</b> und <b>saisonale</b> Lebensmittel kaufen</li>
+        </ul>
+        <p>So schone ich die <b>Umwelt</b> und die <b>Ressourcen</b>.</p>
+      </div>
+
+      <div class="tr">
+        <p>Anahtar ayrım: <b>Bedürfnis</b> (ihtiyaç, yaşamak için gerekli) ve <b>Wunsch</b> (istek). Su, yiyecek, kıyafet Bedürfnis; üçüncü oyuncak Wunsch. Bu ayrım sınavda sorulur.</p>
+        <p><b>nachhaltig</b> = sürdürülebilir. <b>Ressourcen schonen</b> = kaynakları korumak. <b>regional</b> = bölgede yetişmiş, <b>saisonal</b> = mevsiminde.</p>
+        <p>Kızının okulu "Umweltschule" ödüllü: kitap takas rafı (Bücher-Tausch-Regal), upcycling çalışmaları, yüksek yatak ve arı projesi var. Yani bu konuyu zaten yaşayarak öğreniyor — ona "Was macht ihr an der Schule dafür?" diye sor, cevabı kendisi versin.</p>
+      </div>
+
+      <div class="merke">
+        <div class="label">Merksatz</div>
+        <p class="satz">Vor dem Kaufen überlege ich: Brauche ich das wirklich? Nachhaltig einkaufen heißt, an die Umwelt zu denken.</p>
+        <p class="cev">Satın almadan önce düşünürüm: Buna gerçekten ihtiyacım var mı? Sürdürülebilir alışveriş, çevreyi düşünmek demektir.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Wortschatz ============ -->
+  <section class="chapter">
+    <h2>Wortschatz</h2>
+    <p class="tr-title">Ünitenin anahtar kelimeleri</p>
+
+    <div class="tablewrap">
+      <table>
+        <thead>
+          <tr><th>Deutsch</th><th>Türkçe</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>die Demokratie</td><td>demokrasi</td></tr>
+          <tr><td>die Abstimmung</td><td>oylama</td></tr>
+          <tr><td>die Stimme</td><td>oy</td></tr>
+          <tr><td>die Mehrheit</td><td>çoğunluk</td></tr>
+          <tr><td>die Minderheit</td><td>azınlık</td></tr>
+          <tr><td>geheim / frei / gleich</td><td>gizli / özgür / eşit</td></tr>
+          <tr><td>der Klassensprecher</td><td>sınıf başkanı</td></tr>
+          <tr><td>der Klassenrat</td><td>sınıf meclisi</td></tr>
+          <tr><td>vertreten</td><td>temsil etmek</td></tr>
+          <tr><td>das Ergebnis</td><td>sonuç</td></tr>
+          <tr><td>die Gemeinde</td><td>belediye, yerel yönetim</td></tr>
+          <tr><td>der Ortsteil</td><td>mahalle, bağlı yerleşim</td></tr>
+          <tr><td>der Landkreis</td><td>ilçe (idari birim)</td></tr>
+          <tr><td>der Bürgermeister</td><td>belediye başkanı</td></tr>
+          <tr><td>der Gemeinderat</td><td>belediye meclisi</td></tr>
+          <tr><td>beschließen</td><td>karar almak</td></tr>
+          <tr><td>das Rathaus</td><td>belediye binası</td></tr>
+          <tr><td>die Verwaltung</td><td>idare, yönetim</td></tr>
+          <tr><td>die Kommunalwahl</td><td>yerel seçim</td></tr>
+          <tr><td>die Müllabfuhr</td><td>çöp toplama hizmeti</td></tr>
+          <tr><td>die Wasserversorgung</td><td>su temini</td></tr>
+          <tr><td>das Recht / die Pflicht</td><td>hak / sorumluluk</td></tr>
+          <tr><td>die Mitbestimmung</td><td>söz hakkı, karara katılma</td></tr>
+          <tr><td>die Inklusion</td><td>birlikte öğrenme, kapsayıcılık</td></tr>
+          <tr><td>das Grundgesetz</td><td>anayasa</td></tr>
+          <tr><td>die Würde</td><td>onur, haysiyet</td></tr>
+          <tr><td>der Kompromiss</td><td>uzlaşma</td></tr>
+          <tr><td>die Ich-Botschaft</td><td>ben-dili</td></tr>
+          <tr><td>gewaltfrei</td><td>şiddetsiz</td></tr>
+          <tr><td>das Rollenklischee</td><td>kalıp yargı</td></tr>
+          <tr><td>die Gemeinsamkeit / der Unterschied</td><td>ortak nokta / fark</td></tr>
+          <tr><td>die Medien</td><td>medya</td></tr>
+          <tr><td>informieren / unterhalten</td><td>bilgilendirmek / eğlendirmek</td></tr>
+          <tr><td>die Werbung</td><td>reklam</td></tr>
+          <tr><td>der Blickfang</td><td>dikkat çeken unsur</td></tr>
+          <tr><td>die Quengelware</td><td>kasa önü şekerleri</td></tr>
+          <tr><td>die Augenhöhe</td><td>göz hizası</td></tr>
+          <tr><td>die Verpackung</td><td>ambalaj</td></tr>
+          <tr><td>der Konsument</td><td>tüketici</td></tr>
+          <tr><td>das Bedürfnis / der Wunsch</td><td>ihtiyaç / istek</td></tr>
+          <tr><td>das Taschengeld</td><td>harçlık</td></tr>
+          <tr><td>nachhaltig</td><td>sürdürülebilir</td></tr>
+          <tr><td>die Umwelt schonen</td><td>çevreyi korumak</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ============ Fragen ============ -->
+  <section class="chapter">
+    <h2>Übungsfragen</h2>
+    <p class="tr-title">Probearbeit tarzı sorular — cevabı görmek için soruya dokun</p>
+
+    <details>
+      <summary>Was bedeutet „Die Mehrheit entscheidet“?</summary>
+      <div>
+        Die größere Gruppe bekommt recht. Wenn mehr Kinder dafür stimmen, wird das gemacht.
+        <p class="tr-ans">Daha büyük grubun dediği olur.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Nenne drei Regeln für eine Wahl.</summary>
+      <div>
+        Die Wahl ist frei, geheim und gleich.
+        <p class="tr-ans">Seçim özgür, gizli ve eşittir.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Welche Aufgabe hat der Klassensprecher?</summary>
+      <div>
+        Er oder sie vertritt die Klasse, sagt die Wünsche und Probleme der Kinder weiter und hilft bei Streit.
+        <p class="tr-ans">Sınıfı temsil eder, çocukların istek ve sorunlarını iletir.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Wer leitet die Gemeinde, und wer beschließt wichtige Dinge?</summary>
+      <div>
+        Der Bürgermeister oder die Bürgermeisterin leitet die Gemeinde. Der Gemeinderat beschließt wichtige Dinge. Beide werden von den Bürgern gewählt.
+        <p class="tr-ans">Başkan yönetir, meclis karar alır. İkisi de seçimle gelir.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Nenne vier Aufgaben deiner Gemeinde.</summary>
+      <div>
+        Zum Beispiel: die Feuerwehr, die Müllabfuhr, die Wasserversorgung, die Schulen und Kindergärten, die Straßen, die Bücherei oder das Hallenbad.
+        <p class="tr-ans">İtfaiye, çöp, su, okul, yol, kütüphane, yüzme havuzu gibi.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Nenne drei Kinderrechte.</summary>
+      <div>
+        Recht auf Bildung, Recht auf Schutz, Recht auf Mitbestimmung, Recht auf Spiel und Freizeit.
+        <p class="tr-ans">Eğitim, korunma, söz hakkı, oyun ve boş zaman.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Was ist ein Kompromiss?</summary>
+      <div>
+        Ein Kompromiss ist eine Lösung, bei der jeder ein bisschen nachgibt, damit beide zufrieden sind.
+        <p class="tr-ans">Herkesin biraz geri adım attığı çözüm.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Was will Werbung, und wie macht sie das?</summary>
+      <div>
+        Werbung will, dass wir etwas kaufen. Sie benutzt bunte Bilder als Blickfang, bekannte Figuren, fröhliche Musik und Wörter wie „nur heute“ oder „gratis“. Sie zeigt nur die Vorteile.
+        <p class="tr-ans">Satın aldırmak ister; renkli görseller, ünlü figürler, müzik ve "sadece bugün" gibi sözlerle.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Was ist Quengelware, und warum steht sie an der Kasse?</summary>
+      <div>
+        Quengelware sind Süßigkeiten und kleine Sachen direkt an der Kasse. Sie stehen dort unten, damit Kinder sie gut sehen und greifen können und die Eltern darum bitten.
+        <p class="tr-ans">Kasa önündeki şekerler; çocuklar görsün ve istesin diye alçağa konur.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Erkläre den Unterschied zwischen einem Bedürfnis und einem Wunsch.</summary>
+      <div>
+        Ein Bedürfnis brauche ich zum Leben, zum Beispiel Essen, Trinken, Kleidung und eine Wohnung. Einen Wunsch hätte ich gern, aber ich brauche ihn nicht, zum Beispiel ein neues Spielzeug.
+        <p class="tr-ans">İhtiyaç yaşamak için gerekli, istek ise olmasa da olur.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Was kannst du tun, um nachhaltig einzukaufen?</summary>
+      <div>
+        Sachen reparieren statt wegwerfen, tauschen oder gebraucht kaufen, wenig Verpackung wählen und regionale Lebensmittel kaufen. So schone ich die Umwelt.
+        <p class="tr-ans">Tamir etmek, takas etmek, az ambalaj, bölgesel ürün.</p>
+      </div>
+    </details>
+  </section>
+
+  <footer>
+    İçerik, Bavyera resmî müfredatı LehrplanPLUS, HSU 3/4, Lernbereich 1 esas alınarak hazırlandı.
+    <a href="https://www.lehrplanplus.bayern.de/fachlehrplan/grundschule/4/hsu">lehrplanplus.bayern.de</a>
+  </footer>
+
+</div>
+
+<script>
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", function () {
+      navigator.serviceWorker.register("./sw.js").catch(function () {});
+    });
+  }
+</script>
+</body>
+</html>

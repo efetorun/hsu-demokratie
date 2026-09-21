@@ -1,0 +1,17 @@
+{
+  "name": "HSU 4 — Demokratie und Gesellschaft",
+  "short_name": "HSU Demokratie",
+  "description": "Almanca ve Türkçe açıklamalı HSU ünitesi, 4. sınıf Bayern.",
+  "lang": "tr",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#FBF9F3",
+  "theme_color": "#1D3557",
+  "icons": [
+    { "src": "./icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "./icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "./icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
