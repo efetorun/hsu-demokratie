@@ -215,6 +215,30 @@
   }
   details .tr-ans{ color:var(--green); margin-top:.3rem; }
 
+  .cta{
+    margin:3.4rem 0 0;
+    background:var(--sand);
+    border-radius:4px;
+    padding:1.5rem 1.3rem 1.6rem;
+    text-align:center;
+  }
+  .cta h2{ font-size:1.3rem; margin:0 0 .4rem; color:var(--ink); }
+  .cta p{
+    font-family:"Literata",Georgia,serif; font-size:.96rem;
+    margin:.5rem auto; max-width:30rem; color:var(--text);
+  }
+  .cta .units{ color:var(--text-soft); font-size:.91rem; }
+  .cta-btn{
+    display:inline-block; margin:1.1rem 0 .3rem;
+    background:var(--ink); color:var(--paper);
+    text-decoration:none; font-weight:700; font-size:1.02rem;
+    padding:.85rem 1.7rem; border-radius:3px;
+    border:2px solid var(--ink);
+  }
+  .cta-btn:hover{ background:transparent; color:var(--ink); }
+  .cta-btn:focus-visible{ outline:2px solid var(--red); outline-offset:3px; }
+  .cta .fine{ font-size:.85rem; color:var(--text-soft); margin-top:.8rem; }
+
   footer{
     margin-top:3.5rem; padding-top:1.2rem; border-top:2px solid var(--rule);
     font-size:.88rem; color:var(--text-soft);
@@ -227,6 +251,7 @@
     .slip{ box-shadow:none; transform:none; }
     details{ break-inside:avoid; }
     details > div{ display:block !important; }
+    .cta{ display:none; }
     .topic{ break-inside:avoid; }
   }
 </style>
@@ -692,6 +717,15 @@
         <p class="tr-ans">Tamir etmek, takas etmek, az ambalaj, bölgesel ürün.</p>
       </div>
     </details>
+  </section>
+
+  <section class="cta">
+    <h2>Devamı gelsin mi?</h2>
+    <p>Bu, HSU'nun altı ünitesinden ilki. Kalan beşini de aynı şekilde hazırlamayı düşünüyorum:</p>
+    <p class="units">Beden ve sağlık, doğa ve çevre, zaman ve değişim, mekân ve trafik, teknik ve kültür.</p>
+    <p>İlgi olursa devam edeceğim. Sonraki üniteler küçük bir ücretli olacak, bu ilki her zaman ücretsiz kalacak.</p>
+    <a class="cta-btn" href="https://wa.me/491793976608?text=Merhaba%2C%20HSU%20sayfas%C4%B1n%C4%B1%20g%C3%B6rd%C3%BCm.%20Di%C4%9Fer%20%C3%BCniteler%20haz%C4%B1r%20olunca%20haber%20verir%20misiniz%3F%20%C4%B0lgileniyorum." target="_blank" rel="noopener">İlgileniyorum, devamı gelsin</a>
+    <p class="fine">Butona basınca WhatsApp'ta hazır bir mesaj açılır, göndermeniz yeterli.</p>
   </section>
 
   <footer>
