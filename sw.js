@@ -1,8 +1,11 @@
 // Sürüm numarasını değiştirirsen telefonlardaki kopya güncellenir.
-const VERSION = "hsu-v1";
+const VERSION = "hsu-v2";
 const SHELL = [
   "./",
   "./index.html",
+  "./demokratie.html",
+  "./koerper.html",
+  "./style.css",
   "./manifest.webmanifest",
   "./icon-192.png",
   "./icon-512.png",
